@@ -18,7 +18,7 @@ public class Program {
     }
 
 
-    static void Controller(Memtable memtable){
+    private static void Controller(Memtable memtable){
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String cmd;
 
@@ -35,17 +35,11 @@ public class Program {
                     System.out.println("Enter value to search for: ");
                     try{
                         Node node = memtable.Search((float) Integer.parseInt(in.readLine()));
-                        if (node == null){
-                            System.out.println("null");
-                        }
-                        else{
-                            System.out.println(node.val.key + ":" + node.val.value);
-                        }
+                        System.out.println(node != null? node.val.key + ":" + node.val.value: "Not Found");
                     }
                     catch(IOException e){
                         e.printStackTrace();
                     }
-
                     break;
                 case "insert":
                     memtable.Insert(new Tuple<>((float) 10, "Sup"));
