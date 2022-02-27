@@ -6,8 +6,9 @@ import java.io.*;
 public class Manager {
 
     /*
-        Manages Read and Writes to Write ahead log -> Enforce Singleton
+        Manages Read and Writes to Write ahead log
      */
+    
 
 
 }

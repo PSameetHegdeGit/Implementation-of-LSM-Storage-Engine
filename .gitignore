@@ -1,3 +1,5 @@
 .idea/
 out/
 *.iml
+TestFiles/
+.DS_Store

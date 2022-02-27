@@ -1,7 +1,10 @@
-package Interfaces;
+package SortingStructures;
 
 import Utilities.Node;
 import Utilities.Tuple;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Memtable {
 

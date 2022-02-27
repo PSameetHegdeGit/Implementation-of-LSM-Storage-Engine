@@ -1,10 +1,12 @@
 package Utilities;
 
-import Interfaces.Memtable;
+import SortingStructures.Memtable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class NodeGenerator {
@@ -26,6 +28,14 @@ public class NodeGenerator {
             memtable.Insert(new Tuple<> (key, "Value Exists"));
         }
 
+    }
+
+    public static void CreateInstances(Memtable memtable, HashMap<Float, Object> data){
+        for (Map.Entry<Float, Object> entry : data.entrySet()){
+            float key = entry.getKey();
+            Object value = entry.getValue();
+            memtable.Insert(new Tuple<> (key, value));
+        }
     }
 
 }

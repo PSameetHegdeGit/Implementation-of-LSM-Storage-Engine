@@ -1,5 +1,6 @@
-import Interfaces.Memtable;
+import SortingStructures.Memtable;
 import SortingStructures.BST;
+import Utilities.FileLoader;
 import Utilities.Node;
 import Utilities.NodeGenerator;
 import Utilities.Tuple;
@@ -13,7 +14,6 @@ public class Program {
 
     public static void main(String [] args){
         Memtable memtable = new BST();
-        NodeGenerator.CreateInstances(memtable);
         Controller(memtable);
     }
 
@@ -47,6 +47,12 @@ public class Program {
                 case "output nodes":
                     memtable.OutputNodes();
                     break;
+                case "Create Nodes":
+                    NodeGenerator.CreateInstances(memtable);
+                case "load file":
+                    FileLoader fileLoader = new FileLoader("/Users/rajeevhegde/Desktop/Implementation-of-LSM-storage-engine/TestFiles/Test1");
+                    NodeGenerator.CreateInstances(memtable, fileLoader.GetData());
+                    break;
                 case "exit":
                     System.exit(0);
             }
@@ -55,3 +61,12 @@ public class Program {
     }
 
 }
+/*
+    TO DO:
+        (1) load file to Memtable
+        (2) Implement Deletion in BST
+        (3) Implement AvlTree and RedBlackTree
+        (4) Implement Write Ahead Log
+        (5) Implement Seg Dump
+        (6) Implement Compaction + Merge
+ */

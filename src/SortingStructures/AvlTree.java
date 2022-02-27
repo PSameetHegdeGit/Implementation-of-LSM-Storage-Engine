@@ -1,6 +1,5 @@
 package SortingStructures;
 
-import Interfaces.Memtable;
 import Utilities.Node;
 import Utilities.Tuple;
 
