@@ -1,9 +1,11 @@
+import Interfaces.IWalManager;
 import SortingStructures.Memtable;
 import SortingStructures.BST;
 import Utilities.FileLoader;
 import Utilities.Node;
 import Utilities.NodeGenerator;
 import Utilities.Tuple;
+import WriteAheadLog.BaseWalManager;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,11 +16,12 @@ public class Program {
 
     public static void main(String [] args){
         Memtable memtable = new BST();
-        Controller(memtable);
+        BaseWalManager walManager = new BaseWalManager("WriteAheadLog.txt");
+        Controller(memtable, walManager);
     }
 
 
-    private static void Controller(Memtable memtable){
+    private static void Controller(Memtable memtable, IWalManager walManager){
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String cmd;
 
@@ -42,15 +45,17 @@ public class Program {
                     }
                     break;
                 case "insert":
+                    walManager.UpdateWal(new Tuple<>((float) 10, "Sup"));
                     memtable.Insert(new Tuple<>((float) 10, "Sup"));
                     break;
                 case "output nodes":
                     memtable.OutputNodes();
                     break;
-                case "Create Nodes":
+                case "create nodes":
                     NodeGenerator.CreateInstances(memtable);
                 case "load file":
                     FileLoader fileLoader = new FileLoader("/Users/rajeevhegde/Desktop/Implementation-of-LSM-storage-engine/TestFiles/Test1");
+                    walManager.UpdateWal(fileLoader.GetData());
                     NodeGenerator.CreateInstances(memtable, fileLoader.GetData());
                     break;
                 case "exit":
