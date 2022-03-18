@@ -27,12 +27,4 @@ public class Program {
     }
 
 }
-/*
-    TO DO:
-        (1) load file to Memtable
-        (2) Implement Deletion in BST
-        (3) Implement AvlTree and RedBlackTree
-        (4) Implement Write Ahead Log
-        (5) Implement Seg Dump
-        (6) Implement Compaction + Merge
- */
+
