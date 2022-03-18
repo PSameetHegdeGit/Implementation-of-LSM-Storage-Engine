@@ -65,17 +65,17 @@ public class BST extends Memtable {
 
     @Override
     public void Delete(Float key) {
-        Node ptr = Search(key);
 
     }
 
 
-    public void InOrderTraversal(Node node){
+    private void InOrderTraversal(Node node){
         if (node == null){
             return;
         }
 
         InOrderTraversal(node.left);
+        //Needs to be removed
         System.out.print(node.val.key + " ");
         InOrderTraversal(node.right);
     }
