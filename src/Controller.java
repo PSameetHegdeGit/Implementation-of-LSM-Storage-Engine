@@ -2,6 +2,7 @@ import Utilities.Node;
 import Utilities.Tuple;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class Controller {
 
@@ -15,40 +16,25 @@ public class Controller {
 
 
     public void Go(StorageEngine storageEngine){
+        Scanner scanner = new Scanner(in);
+
         while(true){
-            BufferedReader in = new BufferedReader(new InputStreamReader(in));
-            String cmd;
 
             System.out.println("\nEnter cmd");
-            try{
-                cmd = in.readLine();
-            }
-            catch(IOException e){
-                continue;
-            }
+            String cmd = scanner.nextLine();
 
             switch(cmd) {
 
                 case "search":
-                    System.out.println("Enter value to search:\n");
-                    try{
-                        Node node = storageEngine.Search((float) Integer.parseInt(in.readLine()));
-                        System.out.println(node != null? node.val.key + " : " + node.val.value : "Not Found");
-                    }
-                    catch(IOException e){
-                        e.printStackTrace();
-                    }
+                    this.out.println("Enter value to search:");
+                    Node node = storageEngine.Search((float) scanner.nextInt());
+                    this.out.println(node != null? node.val.key + " : " + node.val.value : "Not Found");
                     break;
 
                 case "insert":
-                    System.out.println("Enter value to insert");
-                    try{
-                        Tuple<Float, Object> value = new Tuple<>((float) Integer.parseInt(in.readLine()), "sup");
-                        storageEngine.Insert(value);
-                    }
-                    catch(IOException e){
-                        e.printStackTrace();
-                    }
+                    this.out.println("Enter value to insert");
+                    Tuple<Float, Object> value = new Tuple<>((float) Integer.parseInt(scanner.nextLine()), "sup");
+                    storageEngine.Insert(value);
                     break;
 
                 case "output nodes":
@@ -69,8 +55,4 @@ public class Controller {
         }
 
     }
-
-
-
-
 }

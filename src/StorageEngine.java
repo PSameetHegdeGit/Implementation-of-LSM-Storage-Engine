@@ -8,11 +8,12 @@ import WriteAheadLog.BaseWalManager;
 
 public class StorageEngine {
 
-    Memtable memtable;
-    BaseWalManager walManager;
+    private Memtable memtable;
+    private BaseWalManager walManager;
 
-    public StorageEngine(Memtable memtable, BaseWalManager baseWalManager){
+    public StorageEngine(Memtable memtable, BaseWalManager walManager){
         this.memtable = memtable;
+        this.walManager = walManager;
     }
 
     public Node Search(float value){
