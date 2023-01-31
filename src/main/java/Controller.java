@@ -1,5 +1,5 @@
-import Utilities.Node;
-import Utilities.Tuple;
+import StorageEngineComponents.StorageEngine;
+import StorageEngineComponents.Utilities.Tuple;
 
 import java.io.*;
 import java.util.Scanner;
@@ -18,17 +18,22 @@ public class Controller {
     public void Go(StorageEngine storageEngine){
         Scanner scanner = new Scanner(in);
 
+        System.out.print("See help for list of following commands.");
         while(true){
 
-            System.out.println("\nEnter cmd");
+            System.out.println("\n\nEnter cmd.");
             String cmd = scanner.nextLine();
 
             switch(cmd) {
 
+                case "help":
+                    this.out.println("search | insert | output entries | generate random entries | load file");
+                    break;
+
                 case "search":
                     this.out.println("Enter value to search:");
-                    Node node = storageEngine.Search((float) scanner.nextInt());
-                    this.out.println(node != null? node.val.key + " : " + node.val.value : "Not Found");
+                    Tuple<Float, Object> res = storageEngine.Search((float) scanner.nextInt());
+                    this.out.println(res != null? res.key + " : " + res.value : "Not Found");
                     break;
 
                 case "insert":
@@ -37,16 +42,17 @@ public class Controller {
                     storageEngine.Insert(value);
                     break;
 
-                case "output nodes":
-                    storageEngine.OutputNodes();
+                case "output entries":
+                    storageEngine.OutputEntries();
                     break;
 
-                case "create nodes":
+                case "generate random entries":
                     storageEngine.CreateNodes();
+//                  Grab from BST into PQ
                     break;
 
                 case "load file":
-                    storageEngine.LoadFile();
+                    storageEngine.LoadFile("/Users/rajeevhegde/Desktop/Implementation-of-LSM-storage-engine/TestFiles/Test1");
                     break;
 
                 case "exit":

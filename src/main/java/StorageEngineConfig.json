@@ -1,0 +1,6 @@
+{
+  "WriteAheadLogPath": "src/wal.txt",
+  "SearchTreeMemTableType": "BST",
+  "SegmentCreationFrequencyPerMinute": 10,
+  "PriorityQueueSize": 500
+}

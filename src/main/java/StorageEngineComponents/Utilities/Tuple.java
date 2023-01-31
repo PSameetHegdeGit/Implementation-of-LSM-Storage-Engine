@@ -1,4 +1,4 @@
-package Utilities;
+package StorageEngineComponents.Utilities;
 
 public class Tuple <I, J> {
     public I key;

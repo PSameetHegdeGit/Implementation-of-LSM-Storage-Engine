@@ -1,11 +1,11 @@
-package Utilities;
+package StorageEngineComponents.Utilities;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
 
-public class FileLoader {
+public class  FileLoader {
 
     private String path;
 
